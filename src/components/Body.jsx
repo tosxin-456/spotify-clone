@@ -104,7 +104,7 @@ export default function Body({headerBackground}) {
                           </div>
                           <div className="info">
                             <span className="name">{name}</span>
-                            <span className="artists">{artists}</span>
+                            <span className="artists">{artists.join(", ")}</span>
                           </div>
                         </div>
 
@@ -144,10 +144,12 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      margin: 0;
       color: #e0dede;
       .title{
         color: white;
         font-size: 4rem;
+        margin: 0;
       }
     }
   }
