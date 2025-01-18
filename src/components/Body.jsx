@@ -40,6 +40,12 @@ export default function Body({headerBackground}) {
     };
     getInitialPlaylist();
   },[token, dispatch, selectedPlaylistId]);
+
+  const msToMinutesAndSeconds = (ms) => {
+    const minutes = Math.floor(ms/60000);
+    const seconds = ((ms%60000)/1000).toFixed(0);
+    return minutes + ":" + (seconds <10 ? "0" : "") + seconds;
+  }
   return (
     <Container headerBackground={headerBackground}>
       {selectedPlaylist && (
@@ -98,16 +104,16 @@ export default function Body({headerBackground}) {
                           </div>
                           <div className="info">
                             <span className="name">{name}</span>
-                            <span>{artists}</span>
+                            <span className="artists">{artists}</span>
                           </div>
                         </div>
 
                         <div className="col">
-                          <span>{album}</span>
+                          <span className="album">{album}</span>
                         </div>
 
                         <div className="col">
-                          <span>{duration}</span>
+                          <span>{msToMinutesAndSeconds(duration)}</span>
                         </div>
                       </div>
                     )
@@ -163,6 +169,7 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       margin-block-end: 5rem;
+      /* cursor: pointer; */
       .row{
         padding: 0.5rem 1rem;
         display: grid;
@@ -182,12 +189,13 @@ const Container = styled.div`
         .detail{
           display: flex;
           gap: 1rem;
+          width: 100%;
           .info{
             display: flex;
             flex-direction: column;
-
+          
           }
-        }
+        } 
       }
     }
   }
