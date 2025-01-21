@@ -14,10 +14,19 @@ export default function Navbar({navBackground}) {
       </div>
 
       <div className="avatar">
-        <button>
+        {/* <button>
           <CgProfile />
           <span>{ userInfo?.userName }</span>
+        </button> */}
+        <button>
+          {userInfo?.image ? ( // If user image exists
+            <img src={userInfo.image} alt="Profile" />
+          ) : (
+            <CgProfile />
+          )}
+          <span>{userInfo?.userName}</span>
         </button>
+
       </div>
     </Container>
   )
@@ -82,6 +91,12 @@ const Container = styled.div`
       text-decoration: none;
       font-weight: bold;
       gap: 0.5rem;
+      img {
+        width: 1.3rem;
+        height: 1.3rem;
+        border-radius: 1rem;
+        object-fit: cover;
+      }
       svg{
         font-size: 1.3rem;
         border-radius: 1rem;

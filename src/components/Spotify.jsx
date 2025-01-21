@@ -34,6 +34,7 @@ export default function Spotify() {
       const userInfo = {
         userId: data.id,
         userName: data.display_name,
+        image: data.images?.[0]?.url,
       };
       
       dispatch({ type: reducerCases.SET_USER, userInfo })
