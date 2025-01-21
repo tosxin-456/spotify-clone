@@ -194,15 +194,15 @@ export default function PlayerControls() {
       }
     );
     if (response1.data !== "") {
-      const currentPlaying = {
+      const currentlyPlaying = {
         id: response1.data.item.id,
         name: response1.data.item.name,
         artists: response1.data.item.artists.map((artist) => artist.name),
         image: response1.data.item.album.images[2].url,
       };
-      dispatch({ type: reducerCases.SET_PLAYING, currentPlaying });
+      dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying });
     } else {
-      dispatch({ type: reducerCases.SET_PLAYING, currentPlaying: null });
+      dispatch({ type: reducerCases.SET_PLAYING, currentlyPlaying: null });
     }
   };
   return (
