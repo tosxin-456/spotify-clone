@@ -30,23 +30,77 @@ const retryWithDelay = async (fn, retries = 3, delayMs = 1000) => {
 export default function PlayerControls() {
   const [{ token, playerState, deviceId }, dispatch] = useStateProvider();
 
+  // const changeState = async () => {
+  //   const state = playerState ? "pause" : "play";
+  //   await axios.put(
+  //     `https://api.spotify.com/v1/me/player/${state}`,
+  //     {},
+  //     {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         Authorization: "Bearer " + token,
+  //       },
+  //     }
+  //   );
+  //   dispatch({
+  //     type: reducerCases.SET_PLAYER_STATE,
+  //     playerState: !playerState,
+  //   });
+  // };
+
+
+
+
   const changeState = async () => {
-    const state = playerState ? "pause" : "play";
-    await axios.put(
-      `https://api.spotify.com/v1/me/player/${state}`,
-      {},
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
+    try {
+      const state = playerState ? "pause" : "play";
+      await axios.put(
+        `https://api.spotify.com/v1/me/player/${state}`,
+        {},
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
+      // Update local state immediately
+      dispatch({
+        type: reducerCases.SET_PLAYER_STATE,
+        playerState: !playerState,
+      });
+
+      // Verify the state change
+      const response = await axios.get(
+        "https://api.spotify.com/v1/me/player",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
+      // Ensure UI reflects actual playback state
+      if (response.data) {
+        dispatch({
+          type: reducerCases.SET_PLAYER_STATE,
+          playerState: response.data.is_playing,
+        });
       }
-    );
-    dispatch({
-      type: reducerCases.SET_PLAYER_STATE,
-      playerState: !playerState,
-    });
+    } catch (error) {
+      console.error("Error changing playback state:", error);
+      // Revert to previous state if there's an error
+      dispatch({
+        type: reducerCases.SET_PLAYER_STATE,
+        playerState: playerState,
+      });
+    }
   };
+
+
+  
   const changeTrack = async (type) => {
     await axios.post(
       `https://api.spotify.com/v1/me/player/${type}`,

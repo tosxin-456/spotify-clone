@@ -76,9 +76,18 @@ const Container = styled.div`
             color: #b3b3b3;
         }
     }
-    .track__image{
-        img{
+    .track__image {
+        width: 56px;
+        height: 56px;
+        flex-shrink: 0;
+        
+        img {
+            width: 100%;
+            height: 100%;
             border-radius: 0.3rem;
+            object-fit: cover;
+            display: block;
         }
     }
+
 `
