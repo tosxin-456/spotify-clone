@@ -14,10 +14,7 @@ export default function Navbar({navBackground}) {
       </div>
 
       <div className="avatar">
-        {/* <button>
-          <CgProfile />
-          <span>{ userInfo?.userName }</span>
-        </button> */}
+        
         <button>
           {userInfo?.image ? ( // If user image exists
             <img src={userInfo.image} alt="Profile" />
