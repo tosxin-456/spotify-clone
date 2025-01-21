@@ -46,6 +46,33 @@ export default function Body({headerBackground}) {
     const seconds = ((ms%60000)/1000).toFixed(0);
     return minutes + ":" + (seconds <10 ? "0" : "") + seconds;
   }
+
+  const playTrack = async(
+    id,
+    name,
+    artists,
+    image,
+    context_uri,
+    track_number,
+  ) => {
+    await axios.put(
+      `https://api.spotify.com/v1/me/player/play`,
+      {
+        context_uri,
+        offset: {
+          position: track_number -1,
+        },
+        position_ms: 0
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        },
+      }
+    );
+  }
+
   return (
     <Container headerBackground={headerBackground}>
       {selectedPlaylist && (
@@ -93,7 +120,7 @@ export default function Body({headerBackground}) {
                     track_number,
                   }, index)=> {
                     return (
-                      <div className="row" key={id}>
+                      <div className="row" key={id} onClick={()=>playTrack(id,name,artists,image,context_uri,track_number)}>
                         <div className="col">
                           <span>{index+1}</span>
                         </div>
