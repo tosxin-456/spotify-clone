@@ -6,4 +6,5 @@ export const reducerCases = {
     SET_PLAYING: "SET_PLAYING",
     SET_PLAYER_STATE: "SET_PLAYER_STATE",
     SET_PLAYLIST_ID: "SET_PLAYLIST_ID",
+    SET_DEVICE_ID: "SET_DEVICE_ID",
 }

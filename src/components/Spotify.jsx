@@ -7,6 +7,7 @@ import Footer from './Footer'
 import { useStateProvider } from '../utils/StateProvider'
 import axios from 'axios'
 import { reducerCases } from '../utils/Constants'
+import WebPlayback from './WebPlayback'
 
 export default function Spotify() {
   const [{ token }, dispatch] = useStateProvider();
@@ -44,6 +45,7 @@ export default function Spotify() {
   }, [dispatch, token]);
   return (
     <Container>
+      <WebPlayback />
       <div className="spotify__body">
         <Sidebar />
         <div className="body" ref={bodyRef} onScroll={bodyScrolled}>
