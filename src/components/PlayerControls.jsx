@@ -11,8 +11,9 @@ import { useStateProvider } from "../utils/StateProvider";
 import axios from "axios";
 import { reducerCases } from "../utils/Constants";
 import {MdDevices} from "react-icons/md";
+import Seek from './Seek'
 
-// NEW: Add utility functions at the top
+
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const retryWithDelay = async (fn, retries = 3, delayMs = 1000) => {
@@ -29,27 +30,6 @@ const retryWithDelay = async (fn, retries = 3, delayMs = 1000) => {
 
 export default function PlayerControls() {
   const [{ token, playerState, deviceId }, dispatch] = useStateProvider();
-
-  // const changeState = async () => {
-  //   const state = playerState ? "pause" : "play";
-  //   await axios.put(
-  //     `https://api.spotify.com/v1/me/player/${state}`,
-  //     {},
-  //     {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + token,
-  //       },
-  //     }
-  //   );
-  //   dispatch({
-  //     type: reducerCases.SET_PLAYER_STATE,
-  //     playerState: !playerState,
-  //   });
-  // };
-
-
-
 
   const changeState = async () => {
     try {
@@ -142,7 +122,7 @@ export default function PlayerControls() {
     }
   
     try {
-      // NEW: Get current playback state with retry
+      
       const currentPlayback = await retryWithDelay(() =>
         axios.get('https://api.spotify.com/v1/me/player', {
           headers: {
@@ -155,7 +135,7 @@ export default function PlayerControls() {
       // NEW: Wait briefly before transfer
       await delay(500);
   
-      // NEW: Transfer playback with retry
+      
       await retryWithDelay(() =>
         axios.put(
           'https://api.spotify.com/v1/me/player',
@@ -201,52 +181,73 @@ export default function PlayerControls() {
 
   return (
     <Container>
-      <div className="shuffle">
-        <BsShuffle />
-      </div>
-      <div className="previous">
-        <CgPlayTrackPrev onClick={() => changeTrack("previous")} />
-      </div>
-      <div className="state">
-        {playerState ? (
-          <BsFillPauseCircleFill onClick={changeState} />
-        ) : (
-          <BsFillPlayCircleFill onClick={changeState} />
-        )}
-      </div>
-      <div className="next">
-        <CgPlayTrackNext onClick={() => changeTrack("next")} />
-      </div>
-      <div className="repeat">
-        <FiRepeat />
-      </div>
-      <div className="devices">
-        <MdDevices onClick={transferPlayback} />
-      </div>
+      <ControlsWrapper>
+        <div className="shuffle">
+          <BsShuffle />
+        </div>
+        <div className="previous">
+          <CgPlayTrackPrev onClick={() => changeTrack("previous")} />
+        </div>
+        <div className="state">
+          {playerState ? (
+            <BsFillPauseCircleFill onClick={changeState} />
+          ) : (
+            <BsFillPlayCircleFill onClick={changeState} />
+          )}
+        </div>
+        <div className="next">
+          <CgPlayTrackNext onClick={() => changeTrack("next")} />
+        </div>
+        <div className="repeat">
+          <FiRepeat />
+        </div>
+        <div className="devices">
+          <MdDevices onClick={transferPlayback} />
+        </div>
+      </ControlsWrapper>
+      <SeekWrapper>
+        <Seek />
+      </SeekWrapper>
     </Container>
   );
 }
-
 const Container = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    svg{
-        color: #b3b3b3;
-        transition: 0.2s ease-in-out;
-        cursor: pointer;
-        &:hover{
-            color: white;
-            transform: scale(1.3);
-        }
-    }
-    .state{
-        svg{
-            color: white;
-        }
-    }
-    .previous, .next, .state{
-        font-size: 2rem;
-    }
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+`;
+
+const ControlsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+svg {
+  color: #b3b3b3;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  &:hover {
+    color: white;
+    transform: scale(1.3);
+  }
+}
+
+.state {
+  svg {
+    color: white;
+  }
+}
+
+.previous, .next, .state {
+  font-size: 2rem;
+}
+`;
+
+const SeekWrapper = styled.div`
+  width: 100%;
+  max-width: 800px;
+  padding: 0 1rem;
+`;
