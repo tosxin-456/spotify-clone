@@ -71,7 +71,7 @@ export default function WebPlayback() {
             playerState: !state.paused,
           });
 
-          // Update currently playing if changed
+          
           if (state.track_window?.current_track) {
             const currentTrack = state.track_window.current_track;
             const currentlyPlaying = {
