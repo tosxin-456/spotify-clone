@@ -6,6 +6,15 @@ import axios from 'axios';
 import { reducerCases } from '../utils/Constants'
 
 export default function Body({headerBackground}) {
+
+  const truncateText =(text, maxLength = 20) => {
+    if(text.length > maxLength){
+      return text.slice(0, maxLength) + '...';
+    }
+    return text;
+  };
+
+
   const [{ token, selectedPlaylistId, selectedPlaylist }, dispatch] = useStateProvider();
   useEffect(()=> {
     const getInitialPlaylist = async () => {
@@ -141,13 +150,13 @@ export default function Body({headerBackground}) {
                             <img src={image} alt="track"/>
                           </div>
                           <div className="info">
-                            <span className="name">{name}</span>
-                            <span className="artists">{artists.join(", ")}</span>
+                            <span className="name" title={name}>{truncateText(name)}</span>
+                            <span className="artists" title={artists.join(", ")}>{truncateText(artists.join(", "))}</span>
                           </div>
                         </div>
 
                         <div className="col">
-                          <span className="album">{album}</span>
+                          <span className="album" title={album}>{truncateText(album)}</span>
                         </div>
 
                         <div className="col">
@@ -179,6 +188,7 @@ const Container = styled.div`
       }
     }
     .details{
+      min-width: 0;
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -188,6 +198,7 @@ const Container = styled.div`
         color: white;
         font-size: 4rem;
         margin: 0;
+        max-width: 100% //new line
       }
     }
   }
@@ -221,6 +232,7 @@ const Container = styled.div`
           display: flex;
           align-items: center;
           color: #dddcdc;
+          min-width: 0;
           img{
             height: 40px;
             border-radius: 0.3rem;
@@ -229,13 +241,26 @@ const Container = styled.div`
         .detail{
           display: flex;
           gap: 1rem;
-          width: 100%;
+          min-width: 0;
           .info{
             display: flex;
             flex-direction: column;
-          
+            max-width: calc(100%-60px); //new lines
+            min-width: 0;
+            .name, .artists{
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              max-width: 100%;
+            }
           }
         } 
+        .album{
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 100%;
+        }
       }
     }
   }

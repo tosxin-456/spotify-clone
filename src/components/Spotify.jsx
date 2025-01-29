@@ -92,4 +92,11 @@ const Container = styled.div`
       }
     }
   }
+
+
+  .body__contents {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
 `
