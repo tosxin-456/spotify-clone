@@ -214,6 +214,10 @@ const Container = styled.div`
       transition: 0.3s ease-in-out;
       background-color: ${({headerBackground})=>
         headerBackground ? "#000000dc": "none"};
+      
+      @media (max-width: 800px){
+        grid-template-columns: 0.1fr 1fr 0.7fr 0.1fr;
+      }
     }
     .tracks{
       margin: 0 2rem;
@@ -225,6 +229,11 @@ const Container = styled.div`
         padding: 0.5rem 1rem;
         display: grid;
         grid-template-columns: 0.3fr 3.1fr 1.8fr 0.1fr;
+        
+        @media(max-width: 800px){
+          grid-template-columns: 0.1fr 1fr 0.7fr 0.1fr;
+          padding: 0.5rem;
+        }
         &:hover{
           background-color: rgb(0,0,0,0.7);
         }

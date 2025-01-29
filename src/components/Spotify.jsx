@@ -69,6 +69,9 @@ const Container = styled.div`
   overflow: hidden;
   display: grid;
   grid-template-rows: 85vh 15vh;
+  @media(max-width: 800px){
+    grid-template-rows: 90vh 10vh;
+  }
   .spotify__body{
     display: grid;
     grid-template-columns: 15vw 85vw;
