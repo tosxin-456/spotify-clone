@@ -84,8 +84,8 @@ const Container = styled.div`
     }
   }
   .body{
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
     overflow: auto;
     &::-webkit-scrollbar{
       /* display: none; */
@@ -98,8 +98,8 @@ const Container = styled.div`
 
 
   .body__contents {
-    width: 100%;
-    max-width: 100%;
+    width: 100vw;
+    max-width: 100vw;
     overflow: hidden;
   }
 `
