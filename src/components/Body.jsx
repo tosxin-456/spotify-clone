@@ -183,7 +183,7 @@ const Container = styled.div`
     gap: 2rem;
     .image{
       img{
-        height: 15rem;
+        height: 12rem;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
       }
     }
@@ -199,6 +199,12 @@ const Container = styled.div`
         font-size: 4rem;
         margin: 0;
         max-width: 100% //new line
+      }
+      .description{
+        font-size: 16px;
+        /* @media(max-width: 800px){
+          text-wrap: wrap;
+        } */
       }
     }
   }
@@ -269,7 +275,11 @@ const Container = styled.div`
           overflow: hidden;
           text-overflow: ellipsis;
           max-width: 100%;
+          @media(max-width: 800px){
+            display: none;
+          }
         }
+        
       }
     }
   }

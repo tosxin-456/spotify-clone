@@ -131,12 +131,22 @@ const Container = styled.div`
   align-items: center;
   padding: 2rem;
   height: 15vh;
+  
   position: sticky;
   top: 0;
   transition: 0.3s ease-in-out;
   background-color: ${({ navBackground }) =>
     navBackground ? "rgba(0,0,0,0.7)" : "none"};
   z-index: 1000;
+
+  @media(max-width: 800px){
+    flex-direction: column;
+    width: 100vw;
+    gap: 1rem;
+    height: auto;
+    padding: 1rem;
+    position: relative;
+  }
 
   .search__bar {
     background-color: white;
@@ -149,13 +159,20 @@ const Container = styled.div`
     border: 3px solid transparent;
     transition: all 0.3s ease-in-out;
     position: relative;
-
+    @media(max-width: 800px){
+      width: 80%;
+      order: 2;
+    }
     input {
       border: none;
       height: 2rem;
       font-size: 20px;
       width: 100%;
       outline: none;
+      @media(max-width: 800px){
+        font-size: 16px;
+        height: 1.5rem;
+      }
     }
 
     .search-icon {
@@ -264,6 +281,11 @@ const Container = styled.div`
         padding: 0.2rem;
         color: #c7c5c5;
       }
+    }
+    @media(max-width: 800px){
+      order: 1;
+      align-self: flex-end;
+      margin-bottom: 0.5rem;
     }
   }
 `;
