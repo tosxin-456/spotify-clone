@@ -85,7 +85,7 @@ const Container = styled.div`
   }
   .body{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     overflow: auto;
     &::-webkit-scrollbar{
       /* display: none; */
@@ -94,12 +94,15 @@ const Container = styled.div`
         background-color: rgba(255,255,255,0.6);
       }
     }
+    @media(max-width: 800px){
+      width: 100vw;
+    }
   }
 
 
   .body__contents {
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: 100%;
     overflow: hidden;
   }
 `

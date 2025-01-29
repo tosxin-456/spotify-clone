@@ -275,11 +275,19 @@ const Container = styled.div`
           overflow: hidden;
           text-overflow: ellipsis;
           max-width: 100%;
-          @media(max-width: 800px){
+    
+        }
+        @media(max-width: 800px){
+          .album{
             display: none;
           }
+          .header__row{
+            grid-template-columns: 0.1fr 1fr 0.1fr;
+          }
+          .row{
+            grid-template-columns: 0.1fr 1fr 0.1fr;
+          }
         }
-        
       }
     }
   }
