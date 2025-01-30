@@ -104,5 +104,6 @@ const Container = styled.div`
     width: 100%;
     max-width: 100%;
     overflow: hidden;
+    padding-bottom: 1rem;
   }
 `

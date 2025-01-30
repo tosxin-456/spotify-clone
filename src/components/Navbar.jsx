@@ -134,7 +134,7 @@ const Container = styled.div`
   
   position: sticky;
   top: 0;
-  transition: 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   background-color: ${({ navBackground }) =>
     navBackground ? "rgba(0,0,0,0.7)" : "none"};
   z-index: 1000;
@@ -160,7 +160,7 @@ const Container = styled.div`
     transition: all 0.3s ease-in-out;
     position: relative;
     @media(max-width: 800px){
-      width: 80%;
+      width: 70%;
       order: 2;
     }
     input {

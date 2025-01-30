@@ -118,7 +118,7 @@ export default function Body({headerBackground}) {
                 <div className="col">
                   <span>TITLE</span>
                 </div>
-                <div className="col">
+                <div className="col album">
                   <span>ALBUM</span>
                 </div>
                 <div className="col">
@@ -141,7 +141,7 @@ export default function Body({headerBackground}) {
                   }, index)=> {
                     return (
                       <div className="row" key={id} onClick={()=>playTrack(id,name,artists,image,context_uri,track_number)}>
-                        <div className="col number">
+                        <div className="col">
                           <span>{index+1}</span>
                         </div>
 
@@ -198,13 +198,10 @@ const Container = styled.div`
         color: white;
         font-size: 4rem;
         margin: 0;
-        max-width: 100% //new line
+        max-width: 100% 
       }
       .description{
         font-size: 16px;
-        /* @media(max-width: 800px){
-          text-wrap: wrap;
-        } */
       }
     }
   }
@@ -223,6 +220,9 @@ const Container = styled.div`
       
       @media (max-width: 800px){
         grid-template-columns: 0.1fr 1fr 0.7fr 0.1fr;
+        .album{
+          visibility: hidden;
+        }
       }
     }
     .tracks{
@@ -250,10 +250,10 @@ const Container = styled.div`
           img{
             height: 40px;
             border-radius: 0.3rem;
+            @media(max-width: 800px){
+              padding-left: 1rem;
+            }
           }
-        }
-        .number{
-          margin-right: 0.3rem;
         }
         .detail{
           display: flex;
