@@ -217,6 +217,9 @@ const Container = styled.div`
   align-items: center;
   gap: 0.5rem;
   width: 100%;
+  @media(max-width: 800px){
+    align-items: flex-end;
+  }
 `;
 
 const ControlsWrapper = styled.div`
@@ -224,6 +227,20 @@ const ControlsWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  width: 100%;
+  @media(max-width: 800px){
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .shuffle, .previous, .next, .repeat, .devices {
+      display: none;
+    }
+    .state{
+      display: flex;
+      margin-right: 1rem;
+      /* order: 2;   */
+    }
+  }
 
 svg {
   color: #b3b3b3;
@@ -246,9 +263,7 @@ svg {
 }
 
 @media (max-width: 800px){
-  .shuffle, .previous, .next, .repeat {
-    display: none;
-  }
+  
 }
 `;
 

@@ -141,7 +141,7 @@ export default function Body({headerBackground}) {
                   }, index)=> {
                     return (
                       <div className="row" key={id} onClick={()=>playTrack(id,name,artists,image,context_uri,track_number)}>
-                        <div className="col">
+                        <div className="col number">
                           <span>{index+1}</span>
                         </div>
 
@@ -177,7 +177,7 @@ export default function Body({headerBackground}) {
 
 const Container = styled.div`
   .playlist{
-    margin: 0 2rem;
+    margin: 2rem 2rem;
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -230,7 +230,6 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
       margin-block-end: 5rem;
-      /* cursor: pointer; */
       .row{
         padding: 0.5rem 1rem;
         display: grid;
@@ -252,6 +251,9 @@ const Container = styled.div`
             height: 40px;
             border-radius: 0.3rem;
           }
+        }
+        .number{
+          margin-right: 0.3rem;
         }
         .detail{
           display: flex;

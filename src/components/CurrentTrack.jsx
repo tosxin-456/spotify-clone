@@ -64,10 +64,14 @@ const Container = styled.div`
             flex-direction: column;
             justify-content: center;
             gap: 0.3rem;
+            min-width: 0;
+            flex: 1;
         }
         h4, h6{
             margin: 0;
-
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         h4{
             color: white;
