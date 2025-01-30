@@ -39,4 +39,8 @@ const Container = styled.div`
         accent-color: #456990;
     }
     
+    @media(max-width: 800px){
+        display: none;
+    }
+    
 `

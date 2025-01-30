@@ -90,6 +90,9 @@ const SeekBarContainer = styled.div`
   gap: 0.5rem;
   width: 100%;
   padding: 0 1rem;
+  @media(max-width: 800px) {
+    display: none;
+  }
 `;
 
 const TimeStamp = styled.span`

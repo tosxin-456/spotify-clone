@@ -244,10 +244,16 @@ svg {
 .previous, .next, .state {
   font-size: 2rem;
 }
+
+@media (max-width: 800px){
+  .shuffle, .previous, .next, .repeat {
+    display: none;
+  }
+}
 `;
 
 const SeekWrapper = styled.div`
   width: 100%;
   max-width: 800px;
-  padding: 0 1rem;
+  padding: 0 1rem;  
 `;
