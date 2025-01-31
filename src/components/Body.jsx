@@ -112,7 +112,7 @@ export default function Body({headerBackground}) {
 
             <div className="list">
               <div className="header__row">
-                <div className="col">
+                <div className="col hashtag">
                   <span>#</span>
                 </div>
                 <div className="col">
@@ -141,7 +141,7 @@ export default function Body({headerBackground}) {
                   }, index)=> {
                     return (
                       <div className="row" key={id} onClick={()=>playTrack(id,name,artists,image,context_uri,track_number)}>
-                        <div className="col">
+                        <div className="col number">
                           <span>{index+1}</span>
                         </div>
 
@@ -208,7 +208,7 @@ const Container = styled.div`
   .list{
     .header__row{
       display: grid;
-      grid-template-columns: 0.3fr 3fr 2fr 0.1fr;
+      grid-template-columns: 0.3fr 3fr 1.8fr 0.1fr;
       color: #dddcdc;
       margin: 1rem 0 0 0;
       position: sticky;
@@ -222,6 +222,9 @@ const Container = styled.div`
         grid-template-columns: 0.1fr 1fr 0.7fr 0.1fr;
         .album{
           visibility: hidden;
+        }
+        .hashtag{
+          margin-left: -25px;
         }
       }
     }
@@ -238,6 +241,10 @@ const Container = styled.div`
         @media(max-width: 800px){
           grid-template-columns: 0.1fr 1fr 0.7fr 0.1fr;
           padding: 0.5rem;
+          .number{
+            padding: 0;
+            margin-left: -18px;
+          }
         }
         &:hover{
           background-color: rgb(0,0,0,0.7);

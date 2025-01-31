@@ -52,46 +52,56 @@ export default function CurrentTrack() {
     )
 }
 
+
 const Container = styled.div`
-
-    .track{
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        height: 100%;
-        &__info{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 0.3rem;
-            min-width: 0;
-            flex: 1;
-        }
-        h4, h6{
-            margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        h4{
-            color: white;
-        }
-        h6{
-            color: #b3b3b3;
-        }
+  .track {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.3rem;
+      min-width: 0;
     }
-    .track__image {
-        width: 56px;
-        height: 56px;
-        flex-shrink: 0;
-        
-        img {
-            width: 100%;
-            height: 100%;
-            border-radius: 0.3rem;
-            object-fit: cover;
-            display: block;
-        }
+    
+    h4, h6 {
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+    
+    h4 {
+      color: white;
+    }
+    
+    h6 {
+      color: #b3b3b3;
+    }
+  }
+  
+  .track__image {
+    width: 56px;
+    height: 56px;
+    flex-shrink: 0;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 0.3rem;
+      object-fit: cover;
+      display: block;
+    }
+  }
 
-`
+  @media (max-width: 800px) {
+    width: auto;
+    
+    .track {
+      width: auto;
+    }
+  }
+`;
