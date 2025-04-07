@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function Login() {
   const handleClick = () => {
     const clientId = '236f4498c66d4cfe8eb0944ca5d3d5b4';
-    const redirectUrl = "https://3000-idx-spotify-clone-1736886740698.cluster-blu4edcrfnajktuztkjzgyxzek.cloudworkstations.dev/";
+    const redirectUrl = "https://spotify-clone-six-kohl-33.vercel.app/";
     const apiUrl = "https://accounts.spotify.com/authorize"
     const scope = [
         'user-read-email', 
